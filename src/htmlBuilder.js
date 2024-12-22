@@ -4,7 +4,7 @@ import { generateStyles } from './style.js';
 export function generateHtml(xrayUrl, singboxUrl, clashUrl, baseUrl) {
   return `
     <!DOCTYPE html>
-    <html lang="en">
+    <html lang="zh">
       ${generateHead()}
       ${generateBody(xrayUrl, singboxUrl, clashUrl, baseUrl)}
     </html>
