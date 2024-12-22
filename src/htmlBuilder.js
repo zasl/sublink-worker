@@ -362,21 +362,21 @@ const darkModeToggleFunction = () => `
 const generateRuleSetSelection = () => `
   <div class="container">
     <div class="header-container">
-      <h4 class="header-title">Rule Selection</h4>
+      <h4 class="header-title">规则选择</h4>
       <span class="tooltip-icon">
         <i class="fas fa-question-circle"></i>
         <span class="tooltip-content">
-          These rules determine how traffic is directed through different proxies or directly. If you're unsure, you can use a predefined rule set.
+          这些规则决定了流量如何通过不同的代理或直接连接。如果不确定，可以使用预定义的规则集。
         </span>
       </span>
     </div>
 
     <div class="content-container mb-3">
       <select class="form-select" id="predefinedRules" onchange="applyPredefinedRules()">
-        <option value="custom">Custom</option>
-        <option value="minimal">Minimal</option>
-        <option value="balanced">Balanced</option>
-        <option value="comprehensive">Comprehensive</option>
+        <option value="custom">自定义</option>
+        <option value="minimal">最小化</option>
+        <option value="balanced">均衡</option>
+        <option value="comprehensive">全面</option>
       </select>
     </div>
     <div class="row" id="ruleCheckboxes">
@@ -390,15 +390,15 @@ const generateRuleSetSelection = () => `
       `).join('')}
     </div>
     <div class="mt-4">
-      <h5>Custom Rules</h5>
+      <h5>自定义规则</h5>
       <div class="form-check form-switch mb-3">
         <input class="form-check-input" type="checkbox" id="crpinToggle">
-        <label class="form-check-label" for="crpinToggle">Pin Custom Rules</label>
+        <label class="form-check-label" for="crpinToggle">固定自定义规则</label>
       </div>
       <div id="customRules">
-      <!-- Custom rules will be dynamically added here -->
+      <!-- 自定义规则将在此动态添加 -->
     </div>
-    <button type="button" class="btn btn-secondary mt-2" onclick="addCustomRule()">Add Custom Rule</button>
+    <button type="button" class="btn btn-secondary mt-2" onclick="addCustomRule()">添加自定义规则</button>
   </div>
   </div>
 `;
@@ -625,52 +625,52 @@ const customRuleFunctions = `
     newRuleDiv.dataset.ruleId = customRuleCount++;
     newRuleDiv.innerHTML = \`
       <div class="mb-2">
-        <label class="form-label">Outbound Name*</label>
-        <input type="text" class="form-control mb-2" name="customRuleName[]" placeholder="Rule Name" required>
+        <label class="form-label">规则名称*</label>
+        <input type="text" class="form-control mb-2" name="customRuleName[]" placeholder="规则名称" required>
       </div>
       <div class="mb-2">
-        <label class="form-label">Geo-Site Rule Sets</label>
+        <label class="form-label">Geo-Site 规则集</label>
         <span class="tooltip-icon">
           <i class="fas fa-question-circle"></i>
           <span class="tooltip-content">
-            Site Rules in SingBox comes from https://github.com/lyc8503/sing-box-rules, that means your custom rules must be in the repos
+            SingBox 中的站点规则来自 https://github.com/lyc8503/sing-box-rules，这意味着您的自定义规则必须在该仓库中
           </span>
         </span>
-        <input type="text" class="form-control" name="customRuleSite[]" placeholder="e.g., google,anthropic">
+        <input type="text" class="form-control" name="customRuleSite[]" placeholder="例如：google,anthropic">
       </div>
       <div class="mb-2">
-        <label class="form-label">Geo-IP Rule Sets</label>
+        <label class="form-label">Geo-IP 规则集</label>
         <span class="tooltip-icon">
           <i class="fas fa-question-circle"></i>
           <span class="tooltip-content">
-            IP Rules in SingBox comes from https://github.com/lyc8503/sing-box-rules, that means your custom rules must be in the repos
+            SingBox 中的 IP 规则来自 https://github.com/lyc8503/sing-box-rules，这意味着您的自定义规则必须在该仓库中
           </span>
         </span>
-        <input type="text" class="form-control" name="customRuleIP[]" placeholder="e.g., private,cn">
+        <input type="text" class="form-control" name="customRuleIP[]" placeholder="例如：private,cn">
       </div>
       <div class="mb-2">
-        <label class="form-label">Domain Suffix</label>
-        <input type="text" class="form-control mb-2" name="customRuleDomainSuffix[]" placeholder="Domain Suffix (comma separated)">
+        <label class="form-label">域名后缀</label>
+        <input type="text" class="form-control mb-2" name="customRuleDomainSuffix[]" placeholder="域名后缀（用逗号分隔）">
       </div>
       <div class="mb-2">
-        <label class="form-label">Domain Keyword</label>
-        <input type="text" class="form-control mb-2" name="customRuleDomainKeyword[]" placeholder="Domain Keyword (comma separated)">
+        <label class="form-label">域名关键字</label>
+        <input type="text" class="form-control mb-2" name="customRuleDomainKeyword[]" placeholder="域名关键字（用逗号分隔）">
       </div>
       <div class="mb-2">
-        <label class="form-label">IP CIDR</label>
-        <input type="text" class="form-control mb-2" name="customRuleIPCIDR[]" placeholder="IP CIDR (comma separated)">
+        <label class="form-label">IP 段</label>
+        <input type="text" class="form-control mb-2" name="customRuleIPCIDR[]" placeholder="IP 段（用逗号分隔）">
       </div>
       <div class="mb-2">
-        <label class="form-label">Protocol</label>
+        <label class="form-label">协议</label>
         <span class="tooltip-icon">
           <i class="fas fa-question-circle"></i>
           <span class="tooltip-content">
-            Protocol rules for specific traffic types. More details: https://sing-box.sagernet.org/configuration/route/sniff/
+            特定流量类型的协议规则。更多详情：https://sing-box.sagernet.org/configuration/route/sniff/
           </span>
         </span>
-        <input type="text" class="form-control mb-2" name="customRuleProtocol[]" placeholder="Protocol (comma separated, e.g, http,ssh,dns)">
+        <input type="text" class="form-control mb-2" name="customRuleProtocol[]" placeholder="协议（用逗号分隔，例如：http,ssh,dns）">
       </div>
-      <button type="button" class="btn btn-danger btn-sm" onclick="removeCustomRule(this)">Remove</button>
+      <button type="button" class="btn btn-danger btn-sm" onclick="removeCustomRule(this)">删除</button>
     \`;
     customRulesDiv.appendChild(newRuleDiv);
   }
